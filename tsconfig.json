@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "ES2022",
+    "declaration": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@auth": ["src/auth"],
+      "@config": ["src/config"],
+      "@data-store": ["src/data-store"],
+      "@user": ["src/user"]
+    }
+  },
+  "include": ["src/**/*"]
+}
