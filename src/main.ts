@@ -4,7 +4,7 @@ import { UserController } from '@user';
 
 export const app = initializeApplication({
   serverOptions: aladoServerOptions,
-  controllers: [UserController]
+  controllers: [UserController],
 });
 
 app.start(() => console.log('Application has been successfully started'));

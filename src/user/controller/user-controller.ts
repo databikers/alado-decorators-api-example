@@ -1,4 +1,3 @@
-import process from 'process';
 import { post, Request, defineResponse, defineRequest, get, patch, withAuth } from 'alado';
 import { Id, CredentialsDto, UserDto, UserFilesDto, exampleUserDto } from '../dto';
 import { createWriteStream } from 'fs';
