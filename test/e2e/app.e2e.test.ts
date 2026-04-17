@@ -33,7 +33,6 @@ describe('Example API  e2e test suite', () => {
       .send(userInfo)
       .expect(201)
       .then((response: Response) => {
-        console.log(response);
         expect(response.body.id).toBeDefined();
         expect(response.body.email).toEqual(userInfo.email);
         id = response.body.id;
