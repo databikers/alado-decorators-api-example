@@ -8,7 +8,8 @@ export class UserController {
   @post('/user', { tags: ['User'] })
   @defineResponse({
     statusCode: 201,
-    title: 'User',
+    title: 'Created',
+    entity: 'User',
     headers: { 'Content-Type': 'application/json' },
     body: exampleUserDto,
   })
@@ -18,6 +19,7 @@ export class UserController {
     const user = DataStore.signUp(body as CredentialsDto);
     return {
       statusCode: 201,
+      title: 'Created',
       headers: { 'Content-Type': 'application/json' },
       body: user,
     };
@@ -26,9 +28,10 @@ export class UserController {
   @post('/session', { tags: ['Session'] })
   @defineResponse({
     statusCode: 201,
-    title: 'Token',
+    title: 'Created',
+    entity: 'TokenResponse',
     headers: { 'Content-Type': 'application/json' },
-    body: exampleUserDto,
+    body: { user: exampleUserDto, token: 'abcde' },
   })
   @defineRequest({ body: CredentialsDto })
   public async signIn(req: Request) {
@@ -38,7 +41,7 @@ export class UserController {
     return {
       statusCode: token ? 200 : 401,
       headers: { 'Content-Type': 'application/json' },
-      body: { token, user } || { message: 'Unauthorized' },
+      body: { token, user },
     };
   }
 
@@ -46,7 +49,8 @@ export class UserController {
   @withAuth(bearerAuth)
   @defineResponse({
     statusCode: 200,
-    title: 'User',
+    title: 'OK',
+    entity: 'User',
     headers: { 'Content-Type': 'application/json' },
     body: exampleUserDto,
   })
@@ -73,9 +77,10 @@ export class UserController {
   @withAuth(bearerAuth)
   @defineResponse({
     statusCode: 200,
-    title: 'User',
+    title: 'Users list',
+    entity: 'User',
     headers: { 'Content-Type': 'application/json' },
-    body: [exampleUserDto],
+    body: [ exampleUserDto ],
   })
   @defineRequest({})
   public async getList(req: Request) {
@@ -92,6 +97,7 @@ export class UserController {
   @defineResponse({
     statusCode: 200,
     title: 'User',
+    entity: 'User',
     headers: { 'Content-Type': 'application/json' },
     body: exampleUserDto,
   })
@@ -121,9 +127,9 @@ export class UserController {
   @withAuth(bearerAuth)
   @defineResponse({
     statusCode: 200,
-    title: 'User',
+    title: 'OK',
     headers: { 'Content-Type': 'application/json' },
-    body: exampleUserDto,
+    body: {},
   })
   @defineRequest({ path: Id, files: UserFilesDto })
   public setAvatar(req: Request) {
