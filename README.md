@@ -5,7 +5,7 @@ This is an example the API written with [Alado.js](https://www.npmjs.com/package
 2. Install dependencies
 
 ```shell
-cd alado-api-example;
+cd alado-decorators-api-example;
 npm i;
 ```
 
