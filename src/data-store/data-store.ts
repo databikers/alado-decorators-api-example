@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-import { UserDto, CredentialsDto, UserAuthSourceDto } from '@user';
+import { UserDto, CredentialsDto, UserAuthSourceDto } from 'src/modules/user';
 
 const users = new Map<string, UserDto>();
 const authSources = new Map<string, UserAuthSourceDto>();

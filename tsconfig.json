@@ -18,7 +18,7 @@
       "@auth": ["src/auth"],
       "@config": ["src/config"],
       "@data-store": ["src/data-store"],
-      "@user": ["src/user"]
+      "@module": ["src/modules"]
     }
   },
   "include": ["src/**/*"]

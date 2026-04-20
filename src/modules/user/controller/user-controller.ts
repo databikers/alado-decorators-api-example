@@ -80,7 +80,7 @@ export class UserController {
     title: 'Users list',
     entity: 'User',
     headers: { 'Content-Type': 'application/json' },
-    body: [ exampleUserDto ],
+    body: [exampleUserDto],
   })
   @defineRequest({})
   public async getList(req: Request) {

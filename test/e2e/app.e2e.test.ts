@@ -1,5 +1,5 @@
 import request, { Response } from 'supertest';
-import { CredentialsDto, UserDto } from '../../src/user';
+import { CredentialsDto, UserDto } from '../../src/modules';
 import { aladoServerOptions } from '../../src/config';
 import { app } from '../../src/main';
 
