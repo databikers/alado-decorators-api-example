@@ -4,3 +4,4 @@ export * from './credentials-dto';
 export * from './user-dto';
 export * from './user-files-dto';
 export * from './example-user-dto';
+export * from './check-routing-dto';

@@ -1,6 +1,6 @@
 import { post, Request, defineResponse, defineRequest, get, patch, withAuth } from 'alado';
 import { Id, CredentialsDto, UserDto, UserFilesDto, exampleUserDto } from '../dto';
-import { createWriteStream } from 'fs';
+import { createWriteStream, createReadStream } from 'fs';
 import { DataStore } from '@data-store';
 import { bearerAuth } from '@auth';
 
@@ -161,6 +161,42 @@ export class UserController {
       body: {},
     };
   }
+
+  @get('/user/:id/avatar', { tags: ['User'] })
+  @withAuth(bearerAuth)
+  @defineResponse({
+    statusCode: 200,
+    title: 'OK',
+    headers: { 'Content-Type': 'image/png' },
+    body: {},
+  })
+  @defineRequest({ path: Id })
+  public getAvatar(req: Request) {
+    const { path } = req;
+    const isMyId = this.isMyId(req);
+    if (!isMyId) {
+      return {
+        statusCode: 403,
+        headers: { 'Content-Type': 'application/json' },
+        body: { message: 'Access denied' },
+      };
+    }
+    const user = DataStore.getUser(path.id);
+    if (!user) {
+      return {
+        statusCode: 404,
+        headers: { 'Content-Type': 'application/json' },
+        body: { message: 'Not Found' },
+      };
+    }
+    const readStream = createReadStream(`${process.cwd()}/uploads/user-${path.id}-avatar.png`);
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'image/png' },
+      body: readStream,
+    };
+  }
+
 
   protected isMyId(req: Request) {
     return req.path?.id === req.auth?.user?.id;
