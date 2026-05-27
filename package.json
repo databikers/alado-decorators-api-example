@@ -12,7 +12,8 @@
     "eslint": "eslint src --ext .ts",
     "test": "jest --forceExit --coverage --verbose --runInBand",
     "prettier-check": "prettier . --check",
-    "prettier-write": "prettier . --write"
+    "prettier-write": "prettier . --write",
+    "prepare": "husky"
   },
   "dependencies": {
     "alado": "latest",
