@@ -1,22 +1,19 @@
 # Editors:
 .idea
 *.iml
-
 # Vendor:
 node_modules
-
 # Optional npm cache directory
 .npm
-
 # Logs:
 logs
 *.log
-
-# package-lock.json
+# The lockfile
 package-lock.json
-
 # dist
 dist
-
 # coverage
 coverage
+# Uploads
+uploads/*
+!uploads/.gitkeep
